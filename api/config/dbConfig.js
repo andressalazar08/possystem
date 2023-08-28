@@ -35,6 +35,10 @@ const db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize
 
+
+//model definition
+db.users = require('../models/userModel')(sequelize, DataTypes)
+
 db.sequelize.sync({force:true})
 .then(()=>{
     console.log('Resync on DB!')
