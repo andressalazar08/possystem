@@ -18,6 +18,10 @@ app.get('/', (req, res)=>{
 })
 
 
+//routes import
+const userRoute = require('./routes/userRoute')
+app.use('/api', userRoute)
+
 const PORT = process.env.PORT;
 
 app.listen(PORT,()=>{

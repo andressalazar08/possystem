@@ -9,7 +9,7 @@ module.exports =(sequelize, DataTypes)=>{
         }
     
     },
-    {timestamps:false}
+    {timestamps:true}
     )
 
     return UserModel
