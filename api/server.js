@@ -8,7 +8,7 @@ const app = express();
 //middlewares
 app.use(cors());
 app.use(express.json());
-
+app.use(express.urlencoded({extended:true}))
 
 //simple api test
 app.get('/', (req, res)=>{
