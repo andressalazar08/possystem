@@ -38,7 +38,7 @@ const updateUser = async(req, res)=>{
     const userFound = await User.findOne({where:{username:req.params.username}})
 
     if(userFound===null){
-        res.status(400).json({
+        res.status(404).json({
             message:"User not found"
         })
     }else{
@@ -49,8 +49,26 @@ const updateUser = async(req, res)=>{
     }
 }
 
+const deleteUser = async(req,res)=>{
+
+    const userFound = await User.findOne({where:{username:req.params.username}})
+
+    if(userFound===null){
+        res.status(404).json({
+            message:"User not found, nothing deleted"
+        })
+    }else{
+        await User.destroy({where:{username:req.params.username}})
+        res.status(200).json({
+            message:"User deleted successfully"
+        })
+    }
+
+}
+
 module.exports ={
     getUsers,
     addUser,
-    updateUser
+    updateUser,
+    deleteUser
 }

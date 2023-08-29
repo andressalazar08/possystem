@@ -12,5 +12,8 @@ router.post('/addUser', userController.addUser)
 //3. update a user
 //use localhost:4000/api/updateUser/:username
 router.put('/updateUser/:username', userController.updateUser)
+//4. delete a user
+//use localhost:4000/api/deleteUser/:username
+router.delete('/deleteUser/:username', userController.deleteUser)
 
 module.exports = router
