@@ -32,7 +32,25 @@ const addUser = async (req, res)=>{
   
 }
 
+
+const updateUser = async(req, res)=>{
+
+    const userFound = await User.findOne({where:{username:req.params.username}})
+
+    if(userFound===null){
+        res.status(400).json({
+            message:"User not found"
+        })
+    }else{
+        const user = await User.update(req.body,{where:{username:req.params.username}})
+        res.status(200).json({
+            message:"User updated successfully"
+        })
+    }
+}
+
 module.exports ={
     getUsers,
-    addUser
+    addUser,
+    updateUser
 }
