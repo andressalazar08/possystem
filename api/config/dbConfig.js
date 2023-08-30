@@ -37,7 +37,14 @@ db.sequelize = sequelize
 
 
 //model definition
-db.users = require('../models/userModel')(sequelize, DataTypes)
+db.User = require('../models/userModel')(sequelize, DataTypes)
+db.Product =require('../models/productModel')(sequelize, DataTypes)
+db.Category = require('../models/categoryModel')(sequelize, DataTypes)
+
+
+//models relationships
+db.Category.hasMany(db.Product);
+db.Product.belongsTo(db.Category)
 
 db.sequelize.sync({force:true})
 .then(()=>{
